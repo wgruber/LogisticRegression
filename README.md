@@ -1,2 +1,2 @@
 # LoglinearRegression 
-This "book" resembles a collection of different sources (all of them are referenced in the book) on the statistical topic of the **loglinear Regression Model**. The code and data made available are free to use for everyone who wants to use it for his/her personal interest. 
+This book serves as a compilation of diverse sources on the statistical topic of the loglinear Regression Model, all of which are referenced within. The accompanying code and data are freely available for anyone interested in personal exploration.
