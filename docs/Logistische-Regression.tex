@@ -1,0 +1,1147 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Logistische Regression},
+  pdfauthor={W. R. Gruber},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Logistische Regression}
+\author{W. R. Gruber}
+\date{30.04.2025}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\section{}\label{section}
+
+\includegraphics[width=1\textwidth,height=\textheight]{Images/Cover.png}
+
+\section*{Vorbemerkung}\label{vorbemerkung}
+\addcontentsline{toc}{section}{Vorbemerkung}
+
+Dieses Skriptum wurde mit dem Paket \emph{bookdown} erstellt. Der verwendete R-Code wird als Teil des Skriptums angeführt und kann auch direkt von diesem Dokument in ein R-Skript übernommen und ausgeführt werden. Erläuterungen zum Code beschränken sich zum Teil auf wesentliche Code-Fragmente. Für detaillierte Angaben zu diversen Funktionen ist die R-Hilfe zu verwenden.
+
+Der nachfolgende Code ist spezifisch für die Erstellung dieses Dokumentes, sowie der Bearbeitung der Beispiele im Kurs von Bedeutung. Es wird in diesem Code-Teil sichergestellt, dass die verwendeten Pakte vorhanden und geladen sind. Daher sollte dieser Code am Anfang jeder neuen R-Datei übernommen werden. Die Vorgehensweise ist:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Starten von R-Studio
+\item
+  Öffnen einer neuen R-Script Datei
+\item
+  Kopiere die nachfolgenden Zeilen in diese Datei
+\item
+  Speichere die Datei mit einem entsprechenden Namen
+\item
+  Führe diesen Code aus
+\item
+  Füge deinen Code nach diesen Zeilen ein
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Initialisierung}
+\FunctionTok{rm}\NormalTok{(}\AttributeTok{list =} \FunctionTok{ls}\NormalTok{())}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{require}\NormalTok{(}\StringTok{"pacman"}\NormalTok{)) }\FunctionTok{install.packages}\NormalTok{(}\StringTok{"pacman"}\NormalTok{)}
+\NormalTok{pacman}\SpecialCharTok{::}\FunctionTok{p\_load}\NormalTok{(ggplot2, stats, tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+Des Weiteren ist es von Vorteil, zu Beginn einer Auswertung/Datenanalyse mit R eine entsprechende Verzeichnisstruktur im Window-Dateimanager festzulegen und für diese Struktur ein R-Projektfile anzulegen. Die Verzeichnisstruktur richtet sich im Allgemeinen nach der jeweiligen Analyse, folgende Vorgaben haben sich aber bereits schon mehrmals bewährt:
+
+\begin{figure}
+\centering
+\includegraphics[width=0.2\textwidth,height=\textheight]{Images/LogisticRegression.JPG}
+\caption{\textbf{Abbildung 1}: Dateistruktur für R-Projekt}
+\end{figure}
+
+Inhalte, Beispiele und Daten stammen teilweise aus dem Internet, u.a. (\citeproc{ref-DataTab}{Team-DATAtab 2025}), (\citeproc{ref-DataCamp}{DataCamp 2018}), (\citeproc{ref-OPTUM}{B. Machut 2022}) und den Büchern (\citeproc{ref-Field}{Field 2017}), (\citeproc{ref-Buehner1}{Bühner 2009}) und (\citeproc{ref-Buehner2}{Bühner 2017}).
+
+\section*{Motivation}\label{motivation}
+\addcontentsline{toc}{section}{Motivation}
+
+Die logistische Regression ist ein Spezialfall bzw. eine Erweiterung der Regressionsanalyse und wird verwendet, wenn die abhängige Variable nominalskaliert ist. In der Psychologie kann dies beispielsweise bei der Variable ``Therapieerfolg'' mit den Ausprägungen ``Erfolg'' und ``kein Erfolg'' zutreffend sein.
+
+Mit der logistischen Regression können wir nun die abhängige Variable erklären bzw. die Eintrittswahrscheinlichkeit der Ausprägungen dieser Variable schätzen. Durch diese Wahrscheinlichkeitsaussagen bietet die logistische Regression nicht nur ein Klassifikationsmodell, sondern auch eine Möglichkeit, den Einfluss einzelner Faktoren auf das Ergebnis zu quantifizieren. Dies ist besonders wertvoll, wenn es darum geht, Entscheidungen fundiert zu treffen oder präventive Maßnahmen zu entwickeln.
+
+\subsection{Beispiele aus der Psychologie}\label{beispiele-aus-der-psychologie}
+
+\begin{itemize}
+\item
+  Wir möchten untersuchen, ob eine bestimmte Therapieform für Patienten mit einer Angststörung erfolgreich ist. Hierzu erhalten wir einen Datensatz mit Informationen über Patienten, die eine Therapie durchlaufen haben, sowie deren Therapieergebnisse (erfolgreich/nicht erfolgreich).
+\item
+  Ein anderes Beispiel könnte darin bestehen, die Wahrscheinlichkeit abzuschätzen, ob eine Person mit einem hohen Maß an Stress und bestimmten Persönlichkeitsmerkmalen ``anfällig'' oder ``nicht anfällig'' für Burnout ist. Hierfür könnte man die Daten über Stresslevel, Persönlichkeitstests und den aktuellen psychischen Zustand der Personen verwenden.
+\item
+  In der Sozialpsychologie könnte eine logistische Regression genutzt werden, um die Wahrscheinlichkeit vorherzusagen, dass eine Person sich in einer bestimmten sozialen Situation konform verhält. Zum Beispiel könnte man untersuchen, wie Faktoren wie Gruppengröße, Gruppenzusammenhalt und persönliche Überzeugungen die Wahrscheinlichkeit beeinflussen, dass eine Person konforme Entscheidungen trifft.
+\item
+  In der Allgemeinen Psychologie könnte die logistische Regression verwendet werden, um zu bestimmen, wie wahrscheinlich es ist, dass eine Person unter bestimmten Bedingungen eine Aufgabe erfolgreich bewältigt. Beispielsweise könnte man untersuchen, wie Variablen wie Stressniveau, Schlafqualität und Aufmerksamkeit die Wahrscheinlichkeit beeinflussen, dass eine Person bei einem kognitiven Test erfolgreich ist.
+\item
+  In der Klinischen Psychologie kann eine logistische Regression verwendet werden, um die Wahrscheinlichkeit einer Diagnose zu prognostizieren. Beispielsweise könnte man die Wahrscheinlichkeit berechnen, dass ein Patient eine depressive Störung entwickelt, basierend auf Prädiktoren wie genetischer Veranlagung, früheren traumatischen Erlebnissen und aktuellen Lebensstressoren.
+\end{itemize}
+
+\section*{Grundlegende Idee}\label{grundlegende-idee}
+\addcontentsline{toc}{section}{Grundlegende Idee}
+
+Im Unterschied zur bekannten linearen Regression, werden also anstatt stetiger Werte nun diskrete Werte ausgegeben. In der einfachsten Form der logistischen Regression können somit dichotome Variablen (0 oder 1) prognostiziert werden. Wenn wir also nur zwei Kategorien vorhersagen, wird das Modell als \textbf{binäre logistische Regression} bezeichnet.
+
+Wenn wir versuchen, die Zugehörigkeit zu mehr als zwei Kategorien vorher zusagen wollen, verwenden wir die \textbf{multinomiale} (oder \textbf{polychotome}) \textbf{logistische Regression}\footnote{bei der multinomialen Regression bleiben wie bei der multiplen Regression die grundlegenden Ideen und Vorgehensweisen dieselben.}.
+
+\subsection{Einführendes Beispiel}\label{einfuxfchrendes-beispiel}
+
+Nehmen wir an, dass wir den Erfolg von Therapeuten bei der Behandlung einer bestimmten psychischen Störung vorhersagen wollen. Der Erfolg entspricht dabei einem binären Ergebnis:
+
+\begin{itemize}
+\tightlist
+\item
+  Misserfolg der Behandlung (\emph{Therapieerfolg} = 0)
+\item
+  Erfolg der Behandlung (\emph{Therapieerfolg} = 1).
+\end{itemize}
+
+Wir gehen des Weiteren davon aus, dass vergangene Erfolge wahrscheinlich ein starker Prädiktor für den aktuellen Therapieerfolge sind. Wenn also Therapeut:innen in der Vergangenheit erfolgreich waren, dann werden diese wahrscheinlich auch in der Zukunft erfolgreich sein. Es liegen uns die Daten über den prozentualen Anteil der früheren Erfolge von 75 Therapeuten vor (\emph{Erfolgsrate}), sowie der aktuellen \emph{Therapieerfolg} (mit 0 = Nein = Misserfolg und 1 = Ja = Erfolg).
+
+\begin{verbatim}
+## # A tibble: 6 x 2
+##   Erfolgsrate Therapierfolg
+##         <dbl> <fct>        
+## 1          15 Ja           
+## 2          23 Ja           
+## 3          33 Ja           
+## 4          35 Ja           
+## 5          35 Ja           
+## 6          35 Ja
+\end{verbatim}
+
+Die Werte der Variablen Therapieerfolg entsprechen damit den Grenzen der Wahrscheinlichkeit eines Erfolges. Wenn jemand einen Misserfolg hat, ist die Wahrscheinlichkeit = 0 (Therapie hat definitiv nicht geholfen), und bei einer erfolgreichen Therapie = 1 (Therapie hat definitiv geholfen).
+
+Wenn wir nun die vergangenen Erfolge in 10 Intervalle teilen (0-10{]}, (10-20{]}, \ldots, (90-100{]} und für jedes dieser Intervalle zählen, wie viele aktuelle Thearpieerfolge diesen Intervallen zuzuordnen sind, erhalten wir folgende Übersichtstabelle. Bei dieser Tabelle sind neben den gezählten Erfogen auch die prozentuellen Anteile der Erfolge je Intervall, sowie die kumumlierten Erfolgen angegeben:
+
+\begin{verbatim}
+## # A tibble: 9 x 4
+##   bin     AnzErfolg AnteilErfolg KumAnt
+##   <fct>       <dbl>        <dbl>  <dbl>
+## 1 (0,10]          0        0      0    
+## 2 (10,20]         1        0.025  0.025
+## 3 (20,30]         1        0.025  0.05 
+## 4 (30,40]         7        0.175  0.225
+## 5 (40,50]         9        0.225  0.45 
+## 6 (50,60]         6        0.15   0.6  
+## 7 (60,70]         8        0.2    0.8  
+## 8 (70,80]         5        0.125  0.925
+## 9 (80,90]         3        0.075  1
+\end{verbatim}
+
+Die folgende Abbildung zeigt für jeden Wert des bisherigen Erfolgs, ob die Therapeuten bei der aktuellen Therapie einen Erfolg erzielen (Dreiecke) oder nicht (Kreise). Beachten Sie, dass es nur zwei mögliche Werte für das Ergebnis gibt: 0 (kein Erfolg / die Wahrscheinlichkeit eines Erfolgs ist 0) und 1 (Erfolg / die Wahrscheinlichkeit eines Erfolgs ist 1).
+
+\begin{center}\includegraphics[width=0.7\linewidth]{01_LogisticRegression_files/figure-latex/Therapiebeispiel_Grafik-1} \end{center}
+
+Würde man nun für diese Daten ein einfaches lineare Modell rechnen, also \texttt{mod\_lm\ \textless{}-\ lm(Outcome\ \textasciitilde{}\ Erfolgsrate,\ data\ =\ df)}, dann erhalten wir die als blaue Linie eingezeichnete Regresseionsgerade.
+
+Eine der wichtigsten Annahmen des linearen Modells ist, dass die Beziehung zwischen den Prädiktoren und dem Ergebnis linear ist. Wenn die Ergebnisvariable kategorial ist, wird diese Annahme verletzt (\citeproc{ref-Berry}{Berry 1993}). Wie obige Abbildung zeigt, sind die meisten der beobachteten Daten liegen weit von der Linie entfernt (die Ausnahmen sind die Kreise, wenn der bisherige Erfolg weniger als 10 \% beträgt, und die Dreiecke, wenn der bisherige Erfolg zwischen 65\% und 75\% liegt).
+
+\begin{center}\includegraphics[width=0.7\linewidth]{01_LogisticRegression_files/figure-latex/Residual_Plot_1-1} \end{center}
+
+Der Residuen-Plot dieses Modells zeigt deutlich, dass die Linearität verletzt wurde. Wenn Linearität eine vernünftige Annahme wäre, dann wäre die beobachtete (rote) Trendlinie für die Residuen flach bei 0 (die graue horizontale Linie), aber stattdessen zeigt sie eine Krümmung. Wenn wir binäre Ergebnisse mit dem Modell modellieren, das wir bisher kennengelernt haben, verletzen wir eine wichtige Annahme dieses Modells, und es ist nicht sehr repräsentativ für die Daten!
+
+Zeichnet man jedoch die in obiger Tabelle berechneten kumulierten Anteile der Therapieerfolge im jeweiligen Intervall ein und verbindet diese Punkte, so erhält man die in der ersten Graphik als rote Linie eingezeichnet Kurve. Diese Kurve stellt nun eine weitaus bessere Annäherung an die Daten/Beobachtungen dar!
+
+\section{Theorie der logistischen Regression}\label{theorie-der-logistischen-regression}
+
+\subsection{Lineare Modelle}\label{lineare-modelle}
+
+Das einfache lineare Modell mit einem Prädiktor hatten wir definiert durch:
+
+\[Y_i = b_0 + b_1 \cdot X_i + \varepsilon_i\]
+Bei mehr als einen Prädiktor gilt:
+
+\[Y_i = b_0 + b_1 \cdot X_{1i} + \cdots + b_k \cdot X_{ki} + \varepsilon_i\]
+
+\subsection{Logistische Funktion}\label{logistische-funktion}
+
+Betrachten wir zunächst die folgende Funktion:
+
+\[P(Y) = \frac{1}{1 + e^{-M}}\]
+Bei dieser Gleichung ist \(e\) die Basis des natürlichen Logarithmus. Die Variable \(M\) ist Platzhalter für beliebige Zahlenwerte. Für unsere Zwecke können wir \(M\) definieren als:
+
+\[M := b_0 + b_1 \cdot X_{1i}\]
+
+bzw. auch für multiple Prädiktoren als:
+
+\[M := b_0 + b_1 \cdot X_{1i} + b_2 \cdot X_{2i} + \cdots + b_k \cdot X_{ki}\]
+
+Die Graphik für Werte von \(M \epsilon [-10, 10]\) sieht dann z.B. folgendermaßen aus:
+
+\begin{center}\includegraphics[width=0.7\linewidth]{01_LogisticRegression_files/figure-latex/Sigmoid_Allg-1} \end{center}
+
+Wie bereits bei der linearen Regression bestimmen auch hier die Parameter die Form und die Position der Kurve. Die Parameter sind wiederum die \(b_0, b_1, \cdots, b_k\). Nachfolgend einige beispielhafte \emph{Kurven} für unterschiedliche Parameterwerte in \(b_0\):
+
+\begin{center}\includegraphics[width=0.7\linewidth]{01_LogisticRegression_files/figure-latex/Sigmoid_b0-1} \end{center}
+
+Aber auch in \(b_1\), oder der Kombination mit \(b_0\) ergeben sich unterschiedliche Kurven.
+
+\begin{center}\includegraphics[width=0.7\linewidth]{01_LogisticRegression_files/figure-latex/Sigmoid_b1-1} \end{center}
+
+Durch einige einfache Umformungen der logistischen Funktion lassen sich sehr wichtige und interessante Eigenschaften dieses Modells ableiten. In einem ersten Schritt formen wir \(P(Y)\) derart um, sodass \(e^{-M}\) auf der linken Seite steht:
+
+\[P(Y) = \frac{1}{1 + e^{-M}} \Rightarrow e^{-M} = \frac{1-P(Y)}{P(Y)}\]
+Da ein Wert in einer negativen Potenz gleich dem Kehrwert dieses Wertes in der entsprechenden positiven Potenz ist, bedeutet dies, dass \(e^{-M} = \frac{1}{e^M}\) ist. Nehmen wir gleich an beiden Seiten den Kehrwert und den Logarithmus, erhalten wir unter Anwendung der Gesetze für Potenzen und Logarithmen::
+
+\[e^{M} = \frac{P(Y)}{1-P(Y)} \Rightarrow log_e(e^{M}) = log_e\left(\frac{P(Y)}{1-P(Y)} \right) \Rightarrow M \cdot \underbrace{log_e(e)}_{=1} = log\left(\frac{P(Y)}{1-P(Y)} \right)\]
+\[M = log_e\left(\frac{P(Y)}{1-P(Y)} \right)\]
+Durch Einsetzuen der oben angeführten Funktion für \(M\) ergibt sich:
+
+\[b_0 + b_1 \cdot X_{1i} + \cdots b_k \cdot X_{ki} = log_e\left(\frac{P(Y)}{1-P(Y)} \right)\]
+
+Bei dieser Darstellungsform wird es offensichtlich, dass wir ein lineares Modell verwenden. Allerdings ist die rechte Seite anders! Anstatt den Rohwert der Ergebnisvariablen vorherzusagen, sagen wir stattdessen den natürlichen Logarithmus der Wahrscheinlichkeit des Eintretens des Ereignisses geteilt durch die Wahrscheinlichkeit des Nichteintretens voraus.
+
+Diese Wahrscheinlichkeit kennt man auch unter den Namen \textbf{Odds}, also:
+
+\[Odds = \frac{P(Y)}{1-P(Y)}\]
+Damit können wir zusammenfassend festhalten, dass unser logistisches Regressionsmodell die \(log(\text{Odds von } Y)\) aus der Linearkombination der Prädiktoren vorhersagt! Die Interpretation der Parameter ist dabei genau so wie bei der einfachen, bzw. multiplen Regression:
+
+\begin{itemize}
+\tightlist
+\item
+  \(b_0\) sind die \emph{log odds} der Kriteriumsvariablen, wenn alle Prädiktoren den Wert 0 haben.
+\item
+  \(b_1\) sind die \emph{log odds} der Kriteriumsvariablen, wenn der jeweilige Prädiktor um eine Einheit erhöht und dabei alle anderen Prädiktoren konstant gehalten werden.
+\item
+  \(b_k\) sind die \emph{log odds} der Kriteriumsvariablen, wenn Prädiktor \(k\) um eine Einheit erhöht und dabei alle anderen Prädiktoren konstant gehalten werden.
+\end{itemize}
+
+\subsection{Odds Ratio}\label{odds-ratio}
+
+Obwohl die Interpretation der Parameter sich nicht von einer normalen linearen Regression unterscheidet, ist die Interpretation der logarithmischen Odds der Kriteriumsvariable schwierig. Durch eine weitere, einfache Umrechnung kann man aber auch dieses Problem leicht beheben. Die Umkehrfunktion zum Logarithmus (mit Basis \(e\)) ist die Exponentialfunktion (zur Basis \(e\)), also \(e^{b_0}, e^{b_1}, \cdots, e^{b_k}\). Die Interpretation ist dann wie folgt:
+
+\begin{itemize}
+\tightlist
+\item
+  \(e^{b_0}\) sind die \emph{odds} der Kriteriumsvariablen, wenn alle Prädiktoren den Wert 0 haben.
+\item
+  \(e^{b_1}\) sind die \emph{anteilsmäßigen Änderungen in den odds} der Kriteriumsvariablen, wenn Prädiktor 1 um eine Einheit erhöht und dabei alle anderen Prädiktoren konstant gehalten werden.
+\item
+  \(e^{b_k}\) sind die \emph{anteilsmäßigen Änderungen in den odds} der Kriteriumsvariablen, wenn Prädiktor \(k\) um eine Einheit erhöht und dabei alle anderen Prädiktoren konstant gehalten werden.
+\end{itemize}
+
+\textbf{WICHTIG:}
+
+\begin{itemize}
+\item
+  bei der linearen Regression entspricht das \(b_i\) der tatsächlichen Änderung im Kriterium (\(Y\)), wenn der Prädiktor sich um einen Einheit erhöht.
+  \[b = Y_{\text{erhöht um 1 EH}} - Y_{\text{vorheriger Wert}}\]
+\item
+  in der logistischen Regression gilt:
+  \[b = log_e(odds_{\text{erhöht um 1 EH}}) - log_e(odds_{\text{vorheriger Wert}})\]
+  Unter Anwendung der Regeln für den Logarithmus erhalten wir:
+\end{itemize}
+
+\[b = log_e\left(\frac{odds_{\text{erhöht um 1 EH}}}{odds_{\text{vorheriger Wert}}}\right)\]
+Die bereits oben durchgeführte Vereinfachung durch die Anwendung der Umkehrfunktion ergibt schlussendlich die Form:
+
+\[e^{b} = \frac{odds_{\text{erhöht um 1 EH}}}{odds_{\text{vorheriger Wert}}}\]
+Dieser Ausdruck entspricht dem bekannten \textbf{Odds Ratio} (\(OR\)), wobei \(b\) der Regressionskoeffizient aus der logistischen Regression ist.
+
+\subsection{Interpretation der Odds-Ratio im Kontext Therapieerfolg}\label{interpretation-der-odds-ratio-im-kontext-therapieerfolg}
+
+Die Odds-Ratio (OR) gibt an, wie stark die \textbf{Erfolgsrate aus der Vergangenheit} eines:r Therapeut:in die \textbf{Chance auf einen aktuellen Therapieerfolg} beeinflusst. Sie ergibt sich aus
+
+\[e^{b} = \frac{ \text{odds}_{\text{bei um 1 Prozentpunkt höherer Erfolgsrate}} }{ \text{odds}_{\text{bei niedrigerer Erfolgsrate}} }\]
+
+wobei \(b\) der Regressionskoeffizient (z.B. je ein Prozentpunkt bei der Erfolgsrate) aus der logistischen Regression ist.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{\texorpdfstring{a) Fall 1: \(e^{b} = 1\) --- Kein Einfluss}{a) Fall 1: e\^{}\{b\} = 1 --- Kein Einfluss}}\label{a-fall-1-eb-1-kein-einfluss}
+
+\textbf{Interpretation:}\\
+Ein Prozentpunkt mehr bei der vergangenen Erfolgsrate \textbf{verändert die Odds für einen aktuellen Therapieerfolg nicht}. Es besteht \textbf{keinerlei Zusammenhang} zwischen den bisherigen Erfolgen und dem aktuellen Behandlungserfolg.
+
+\textbf{Beispiel:}\\
+Ob ein:e Therapeut:in in der Vergangenheit eine Erfolgsrate von 40\,\% oder 70\,\% hatte: Die Chance auf einen aktuellen Behandlungserfolg bleibt \textbf{gleich}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{\texorpdfstring{b) Fall 2: \(e^{b} > 1\) --- Erhöhte Erfolgswahrscheinlichkeit}{b) Fall 2: e\^{}\{b\} \textgreater{} 1 --- Erhöhte Erfolgswahrscheinlichkeit}}\label{b-fall-2-eb-1-erhuxf6hte-erfolgswahrscheinlichkeit}
+
+\textbf{Interpretation:}\\
+Ein Prozentpunkt mehr bei der vergangenen Erfolgsrate \textbf{erhöht die Odds für einen aktuellen Therapieerfolg}. Erfolgreiche Therapeut:innen in der Vergangenheit sind \textbf{mit höherer Wahrscheinlichkeit} auch aktuell erfolgreich.
+
+\textbf{Beispiel:}\\
+Für \(e^{b} = 1.05\): Wenn Therapeut:in A eine frühere Erfolgsrate von 60\,\% hatte und Therapeut:in B 61\,\%, dann sind die Chancen von B auf einen aktuellen Therapieerfolg \textbf{5\,\% höher} als die von A.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsubsection{\texorpdfstring{c) Fall 3: \(e^{b} < 1\) --- Verringerte Erfolgswahrscheinlichkeit}{c) Fall 3: e\^{}\{b\} \textless{} 1 --- Verringerte Erfolgswahrscheinlichkeit}}\label{c-fall-3-eb-1-verringerte-erfolgswahrscheinlichkeit}
+
+\textbf{Interpretation:}\\
+Ein Prozentpunkt mehr bei der vergangenen Erfolgsrate \textbf{senkt die Odds für einen aktuellen Therapieerfolg}. Das heißt, erfolgreiche Therapeut:innen in der Vergangenheit sind aktuell \textbf{mit geringerer Wahrscheinlichkeit} erfolgreich (etwa aufgrund von Zufall oder Überanstrengung).
+
+\textbf{Beispiel:}\\
+Für \(e^{b} = 0.95\): Wenn Therapeut:in X eine frühere Erfolgsrate von 70\,\% hatte und Therapeut:in Y 71\,\%, dann liegen die Chancen von Y auf einen aktuellen Therapieerfolg um \textbf{5\,\% niedriger} als die von X.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Zusammenfassung:}
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Wert von \(e^{b}\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Interpretation
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(= 1\) & Kein Zusammenhang zwischen Erfolgsrate und aktuellem Therapieerfolg \\
+\(> 1\) & Höhere Erfolgsrate → größere Erfolgswahrscheinlichkeit \\
+\(< 1\) & Höhere Erfolgsrate → geringere Erfolgswahrscheinlichkeit \\
+\end{longtable}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\section{Evaluierung des Modells}\label{evaluierung-des-modells}
+
+Bei der Evaluierung eines logistischen Regressionsmodells gibt es mehrere Kennwerte und Metriken, die üblicherweise verwendet werden, um die Qualität und Aussagekraft des Modells zu bewerten. Nachfolgend sind einige der wichtigsten Methoden beschrieben.
+
+\subsection{Likelihood und Log-Likelihood}\label{likelihood-und-log-likelihood}
+
+Um eine Bewertung für die Eignung des linearen Modells zu erhalten, haben wir den Determinationskoeffizienten / das Bestimmtheitsmaß (\(R^2\), den quadrierten Pearson Korrelationkoeffizienten) verwendet.
+
+Bei der logistischen Regression verwenden wir nun die Log-Likelihood. Allgemein ist die Likelihood ein zentrales Konzept in der Statistik, vor allem bei der Parameterschätzung. Die Parameter\footnote{Parameter sind die bestimmenden Elemente einer Funktion, bzw. eines Elementes. Bei der linearen Regression ist es der Interzept \(b_0\) und die Steigung \(b_1\), die eindeutig eine Gerade in der Ebene bestimmen. Damit sind \(b_0\) und \(b_1\) die Parameter der linearen Funktion.} eines Modells werden häufig mit dem griechischen Buchstaben \(\theta\) bezeichnet. Die Likelihood ist eine Funktion von \(\theta\), die angibt, wie \emph{plausibel} die beobachteten Daten für verschiedene Parameterwerte sind.
+
+\(\theta\) wäre in unserem Therapeuten-Beispiel typischerweise der Vektor der Regressionskoeffizienten (z.B. \((b_0, b_1)\), die den Zusammenhang zwischen Erfolgsrate und Therapieerfolg beschreiben.
+
+Allgemeine Beispiele für \(\theta\) sind:
+
+\begin{itemize}
+\tightlist
+\item
+  Bei einer \textbf{Normalverteilung}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(\theta = \mu\) (Erwartungswert)
+  \item
+    \(\theta = \sigma^2\) (Varianz)
+  \item
+    oder als Vektor: \(\theta = (\mu, \sigma^2)\)
+  \end{itemize}
+\item
+  Bei einer \textbf{Binomialverteilung}: \(\theta = p\) (Wahrscheinlichkeit für Erfolg bei einem Versuch)
+\item
+  Bei einer \textbf{Poissonverteilung}: \(\theta = \lambda\) (Erwartungswert/Rate)
+\item
+  Bei einer \textbf{Logistischen Regression}: \(\theta = \text{ Regressionskoeffizienten } (b_0, b_1, \cdots)\)
+\end{itemize}
+
+\subsubsection{Definition der Likelihood}\label{definition-der-likelihood}
+
+Angenommen, wir haben Beobachtungen \(x_1, x_2, \dots, x_n\), die als unabhängige Realisierungen einer Zufallsvariablen\footnote{In der Stochastik ist eine Zufallsvariable eine Größe, deren Wert vom Zufall abhängig ist. Formal ist eine Zufallsvariable eine Funktion, die jedem möglichen Ergebnis eines Zufallsexperiments eine Größe zuordnet. Beispiele für reelle Zufallsvariablen sind die Augensumme von zwei geworfenen Würfeln und die Gewinnhöhe in einem Glücksspiel (Definition Wikipedia).} angesehen werden. Wenn das Modell von einem Parameter \(\theta\) abhängt, dann ist die Likelihood-Funktion definiert als:
+
+\[L(\theta) = P(x_1, x_2, \dots, x_n \mid \theta).\]
+
+\textbf{Wichtig zu beachten:}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Diskrete vs.~stetige Daten}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Bei \textbf{diskreten} Zufallsvariablen ist \(P(x_1, \dots, x_n\mid\theta)\) eine \textbf{Wahrscheinlichkeitsfunktion}.\\
+  \item
+    Bei \textbf{stetigen} Zufallsvariablen schreibt man für die \emph{Dichtefunktion} \(f(\cdot\mid\theta)\) korrekterweise:
+  \end{itemize}
+\end{enumerate}
+
+\[L(\theta) \;=\; f(x_1, x_2, \dots, x_n \mid \theta)\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \textbf{Funktion in \(\theta\)}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Formal ist \(L(\theta)\) \emph{keine} Wahrscheinlichkeitsverteilung über \(\theta\), sondern eine Funktion, die angibt, wie \emph{plausibel} die beobachteten Daten für verschiedene \(\theta\)-Werte sind.
+  \end{itemize}
+\item
+  \textbf{Unabhängigkeit der Beobachtungen}\\
+  Haben \((x_1,\dots,x_n)\) die gemeinsame Verteilung \(P(\cdot\mid\theta)\) und sind sie \textbf{unabhängig}, so zerfällt die Likelihood in ein Produkt der Einzelwahrscheinlichkeiten bzw. -dichten:
+\end{enumerate}
+
+\[L(\theta) = P(x_1, \dots, x_n \mid \theta)  = \prod_{i=1}^n P(x_i \mid \theta) \quad\text{bzw.}\quad    \prod_{i=1}^n f(x_i \mid \theta)\]
+
+Die Likelihood ist das Produkt mehrerer Wahrscheinlichkeitsdichten (Werte \(\leq 1\)), daher wird das Ergebnis meist schnell \textbf{sehr klein} - besonders, wenn viele Beobachtungen vorkommen. Einzelne Dichtewerte (wie z.B. bei der Normalverteilung) sind normalerweise schon kleiner als 1, und das Produkt von mehreren dieser Werte ergibt dann eine noch kleinere Zahl. Daher ist bei der Interpretation der Likelihood folgendes zu beachten:
+
+\begin{itemize}
+\tightlist
+\item
+  Die \textbf{absolute Höhe} der Likelihood ist \textbf{nicht} direkt interpretierbar, da sie von der Anzahl der Daten und der Skalierung abhängt.
+\item
+  \textbf{Wichtig ist der Vergleich:} man kann Likelihood-Werte für verschiedene Parameter \(b_0, b_1, \lambda, \mu\) vergleichen. Der Parameter, für den die Likelihood \textbf{am größten ist}, passt am besten zu den Daten ( = \textbf{Maximum-Likelihood-Schätzer}, siehe weiter unten).
+\item
+  Die Likelihood selbst ist \textbf{keine Wahrscheinlichkeit}, sondern eben ein (oft kleiner) Wert, der beschreibt, wie plausibel die Parameterwerte angesichts der Daten sind. Sie ist nur zum \textbf{Vergleich von Parametern} gedacht, um zu entscheiden, welcher Wert des Parameters die beobachteten Daten am besten erklären würde.
+\end{itemize}
+
+\subsubsection{Die Log-Likelihood}\label{die-log-likelihood}
+
+Das direkte Arbeiten mit dem Produkt in der Likelihood kann aufgrund von numerischen Problemen, wie sehr kleinen Zahlen, unhandlich sein. Daher wendet man den Logarithmus an, was zur \textbf{Log-Likelihood (LL)} führt. Die Log-Likelihood ist definiert als:
+
+\[LL(\theta) = \log_e \left( L(\theta) \right) = \log_e \left( \prod_{i=1}^{n} P(x_i \mid \theta) \right).\]
+Durch Anwendung der Logarithmengesetze wird das Produkt in eine Summe umgewandelt:
+
+\[LL(\theta) = \sum_{i=1}^{n} \log_e \left( P(x_i \mid \theta) \right).\]
+Diese Transformation hat mehrere Vorteile:
+
+\begin{itemize}
+\item
+  \textbf{Mathematische Vereinfachung:} Summen lassen sich in Ableitungen und Optimierungsverfahren einfacher handhaben als Produkte.
+\item
+  \textbf{Numerische Stabilität:} Der Logarithmus verhindert, dass extrem kleine Produktwerte, die bei vielen Beobachtungen auftreten können, zu Rundungsfehlern führen.
+\end{itemize}
+
+\subsubsection{Anwendung in der Parameterschätzung}\label{anwendung-in-der-parameterschuxe4tzung}
+
+In der Maximum-Likelihood-Methode wird der Parameterwert \(\theta\) gesucht, der die Log-Likelihood maximiert. Dieser Schätzer, der sogenannte Maximum-Likelihood-Schätzer (MLE), liefert die Parameter, unter denen das Modell die beobachteten Daten am wahrscheinlichsten macht.
+
+\subsection{Anwendung in der Logistischen Regression}\label{anwendung-in-der-logistischen-regression}
+
+Die logistische Regression modelliert auf der Grundlage von Beobachtungen \((Y)\) die Wahrscheinlichkeit, ob ein Ereignis \(P(Y)\) eintritt, oder nicht. Für eine bestimmte Person \(i\) ist das beobachtete Ergebnis \(Y_i\) entweder 0 oder 1, aber der vorhergesagte Wert \(P(\hat{Y}_i)\) ist ein Wert zwischen 0 und 1.
+
+Bei der Bewertung der Anpassung des \emph{linearen Modells} haben wir die beobachteten und vorhergesagten Werte des Ergebnisses verglichen und \(R^2\) (das Bestimmtheitsmaß) zur Bewertung der Modellanpassung verwendet.Bei der \textbf{logistischen Regression} wird die \textbf{Log-Likelihood (LL)} verwendet. Betrachten wir dazu:
+
+\[LL = \sum_{i=1}^{n}(Y_i \cdot ln(P(\hat{Y}_i)) + (1 - Y_i) \cdot ln(P(1 - \hat{Y}_i))\]
+
+Diese Summe der Wahrscheinlichkeiten gibt Auskunft über die nicht erklärte Information, die nach Anwedung des Modells verbleibt. Da es sich um Wahrscheinlichkeiten im Wertebereich \(LL \in [0, 1]\) handelt, ist der Logarithmus von LL stets eine negative Zahl. Daraus folgt, dass große Werte der Log-Likelihood-Statistik auf schlecht passende statistische Modelle hinweisen, denn je größer der Wert der Log-Likelihood, desto mehr unerklärte Varianzbeobachtungen gibt es.
+
+\subsubsection{\texorpdfstring{Die Deviance-Statistic (\(\Delta D\))}{Die Deviance-Statistic (\textbackslash Delta D)}}\label{die-deviance-statistic-delta-d}
+
+Ein Nachteil der \(LL\)-Modellschätzung ist der negative Wert und eine fehlende Vergleichsverteilung für die Schätzung der Signifikanz eines Modellunterschiedes. Durch Multiplikation der LL mit dem Faktor -2 erhalten wir die sogenannte Deviance (\(\delta D\)):
+
+\[\Delta D= -2 \cdot LL\]
+
+wobei \(LL\) die Likelihood des Modells ist. Das Minus-Zeichen und der Faktor 2 haben unter anderem folgende Gründe:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Vergleichbarkeit:} durch die Multiplikation mit -2 wird die Deviance positiv und so skaliert, dass sie asymptotisch (bei großen Stichproben) einer \(\chi^2\)-Verteilung folgt, was Vergleiche und Signifikanztests, wie z. B. den Likelihood-Ratio-Test\footnote{es gilt für \(log \left( \frac{A}{B} \right) = log(A) - log(B)\). Damit sollte klar sein, warum man von Ratio-Test sprechen kann, obwohl die Differenz zweier log-Werte in der Formel dargestellt wird!}, ermöglicht. Die \(\chi^2\)-Statistisk berechnet sich aus (\textbf{Bemerkung:} die Freiheitsgrade \(k\) entsprechen der Anzahl der im Modell verwendeten Parameter. Im \emph{Null-Modell} (\(Model_0\)) ist \(k = 1\), in erweiterten Modellen jeweils der Anzahl der Prädiktoren + 1 (für den konstanten Term)):
+\end{itemize}
+
+\[\chi^2 = (-2 \cdot LL_{Model_0}) - (-2 \cdot LL_{Model_1})\]
+\[\chi^2 = 2 \cdot LL_{Model_1} - 2 \cdot LL_{Model_0}\]
+\[df = k_1 - k_0\]
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Interpretation:} Ein kleinerer Deviance-Wert zeigt an, dass das Modell eine höhere Likelihood (bzw. eine bessere Anpassung an die Daten) aufweist. Ist die Deviance besonders klein, passen die vom Modell vorhergesagten Wahrscheinlichkeiten gut zu den beobachteten Ausprägungen.
+\end{itemize}
+
+\subsubsection{Anschauliche Erklärung}\label{anschauliche-erkluxe4rung}
+
+Stellen wir uns vor, dass wir zwei Modelle betrachten möchten:
+
+\begin{itemize}
+\tightlist
+\item
+  Ein \textbf{Modell 0}, das nur einen konstanten Wert (bei der logistischen Regression ist dies die am häufigsten auftretende Ergebniskategorie, was einer Vorhersage des Ergebnisses anhand des Achsenabschnitts entspricht).
+\item
+  Ein \textbf{Modell 1}, das zusätzlich weitere Prädiktoren enthält und komplexere Zusammenhänge abbilden kann.
+\end{itemize}
+
+Das Modell mit der höheren Likelihood (also besserer Anpassung an die Daten) wird auch einen niedrigeren \(-2 \cdot LL\)-Wert aufweisen -- sprich, \textbf{eine niedrigere Deviance}. Wenn der Vergleich zeigt, dass die Erweiterung von Modell 0 zu Modell 1 zu einer signifikanten Reduktion der Deviance führt, spricht dies für einen Mehrwert der zusätzlichen Prädiktoren.
+
+\subsection{Wald Statistik}\label{wald-statistik}
+
+Wie bereits bei der (multiplen) linearen Regression, sind auch bei der logistische Regression an einer statistischen Absicherung der Parameter interessiert. Mit der Wald-Statistik kann die Bedeutung einzelner Prädiktoren in einem logistischen Regressionsmodell getestet werden.
+
+Für dieses Modell gibt es analog zur \(t\)-Statistik (\(b / SE_{b}\)) eine \(z\)-Statistik. Wenn der Koeffizient signifikant von Null abweicht, kann man davon ausgehen, dass der Prädiktor einen signifikanten Beitrag zur Vorhersage des Ergebnisses leistet. Die folgende Gleichung zeigt, wie die z-Statistik berechnet wird:
+
+\[z=\frac{b}{SE_b}\]
+
+Damit ist diese Statistik im Grunde identisch mit der t-Statistik im linearen Modell!
+
+Wie (\citeproc{ref-Menart}{Menart 2002}) zeigen konnte, wird der Standardfehler für große \(b\)-Werte ungenau (größer), was zu einer Unterschätzung der \(z\)-Statistik führt. Dies erhöht die Wahrscheinlichkeit, dass ein Prädiktor als nicht signifikant ausgewiesen wird, obwohl er in Wirklichkeit einen signifikanten Beitrag zum Modell leistet. Eine Alternative wäre die Prädiktoren hierarchisch einzugeben und die Veränderung in der Likelihood-Ratio-Statistik zu untersuchen.
+
+\subsection{\texorpdfstring{Pseudobestimmtheitsmaß (Pseudo-\(R^2\) oder McFadden's \(R^2\))}{Pseudobestimmtheitsmaß (Pseudo-R\^{}2 oder McFadden's R\^{}2)}}\label{pseudobestimmtheitsmauxdf-pseudo-r2-oder-mcfaddens-r2}
+
+In der linearen Regression beschreibt \(R^2\) den Anteil der Varianz, der durch das Modell erklärt wird. In der logistischen Regression ist das standardmäßige \(R^2\) jedoch nicht anwendbar. Stattdessen gibt es Pseudo-\(R^2\)-Maße wie McFadden's R², die den relativen Informationsgewinn eines Modells im Vergleich zu einem Nullmodell angeben.
+
+Das Maß hilft quantifiziert, wie gut das Modell Daten im Vergleich zu einem Modell ohne Prädiktoren erklärt.
+
+\subsection{Genauigkeit (Accuracy)}\label{genauigkeit-accuracy}
+
+Der Anteil der korrekt vorhergesagten Beobachtungen im Vergleich zur Gesamtanzahl der Beobachtungen.
+
+Der Vorteil an diesem Maß ist, dass es einfach zu berechnen und zu verstehen. Allerdings kann es auch irreführend sein, wenn die Verteilung der Fälle in den Klassen unausgeglichen sind, da sie die Dominanz der Mehrheitspopulation betont.
+
+\subsection{Präzision (Precision)}\label{pruxe4zision-precision}
+
+Beschreibung: Der Anteil der richtig vorhergesagten positiven Beobachtungen im Vergleich zur Gesamtzahl der vorhergesagten positiven Beobachtungen.
+
+Diese Maß ist vor allem nützlich, wenn die \emph{Kosten} für falsch-positive Ergebnisse hoch sind. Es ist zu beachten, dass die falsch-negativen Ergebnisse nicht berücksichtigt werden!
+
+\subsection{Recall (Sensitivität oder True Positive Rate)}\label{recall-sensitivituxe4t-oder-true-positive-rate}
+
+Der Anteil der richtig vorhergesagten positiven Beobachtungen im Vergleich zur Gesamtzahl der tatsächlichen positiven Beobachtungen. Das ist vor allem dann wichtig, wenn das Auffinden aller positiven Instanzen entscheidend ist. Allerdings berücksichtigt dieses Maß nicht die falsch-positiven Ergebnisse nicht.
+
+\subsection{F1-Score}\label{f1-score}
+
+Der harmonische Mittelwert von Präzision und Recall. Dadurch gibt eine ausgeglichene Sichtweise, wenn sowohl Präzision als auch Recall wichtig sind.
+
+\subsection{Receiver Operating Characteristic (ROC) Curve}\label{receiver-operating-characteristic-roc-curve}
+
+Eine grafische Darstellung der True Positive Rate gegen die False Positive Rate bei verschiedenen Schwellenwerten. Bietet eine umfassende Visualisierung der Klassifikationsleistung für alle möglichen Schwellenwerte, kann aber ann bei unausgeglichenen Klassen in die Irre führen, da sie alle Schwellenwerte gleich gewichtet.
+
+\subsection{Area Under the ROC Curve (AUC-ROC)}\label{area-under-the-roc-curve-auc-roc}
+
+Ein skalarloser Wert, der die Fähigkeit des Modells misst, positive von negativen Klassen zu trennen. Misst die Gesamtleistung des Modells und ist gut geeignet für unausgeglichene Klassenverteilungen.
+
+\subsection{Konfusionsmatrix (Confusion Matrix):}\label{konfusionsmatrix-confusion-matrix}
+
+Eine Tabelle, die die Häufigkeiten von True Positives, False Positives, True Negatives und False Negatives zusammenfasst. Bietet detaillierte Einblicke in die Vorhersageleistungen, kann aber bei großen Datensätzen schwer zu interpretieren sein.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{Images/Konfussionsmatrix.jpg}
+\caption{\textbf{Abbildung 2}: Wahrheistmatrix (Konfusionsmatrix)}
+\end{figure}
+
+\subsection{Zusammenfassung}\label{zusammenfassung}
+
+Jede dieser Metriken bietet spezifische Einblicke in die Leistungsfähigkeit eines logistischen Regressionsmodells. Die Wahl der Metrik sollte von den spezifischen Anforderungen und Prioritäten der Anwendung abhängen, einschließlich der Bedeutung von falsch-positiven und falsch-negativen Ergebnissen.
+
+Zusammenfassend ergänzen sich diese Ansätze, indem sie unterschiedliche Aspekte der logistischen Regression beleuchten. Für eine umfassende Modellbewertung in der Praxis ist es sinnvoll, beide Gruppen von Metriken zu berücksichtigen: Die ersteren zur Beurteilung der Klassifikationsleistung und die letzteren für Einblicke in die Modellanpassung und die Rolle einzelner Prädiktoren.
+
+\section{Anwendungsbeispiel}\label{anwendungsbeispiel}
+
+Als Mitarbeiter einer groß angelegten Schlafstudie haben Sie die Aufgabe, die Faktoren, die zu Schlafstörung führen, besser zu verstehen. Außerdem möchten Sie dieses Wissen nutzen, um bei Vorliegen einer Schlafstörung eingreifen und die Gesundheit und Lebensqualität dieser Personen verbessern zu können. Sie möchten also die Wahrscheinlichkeit vorhersagen können, dass eine Person mit (einem) bestimmten Merkmale(n) eine Schlafstörung hat.
+
+Folgende Daten\footnote{bei den vorliegenden Daten handelt es sich um simulierte Daten!} liegen für Ihre Analysen vor:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{sleep\_problem}: gibt an, ob eine Person ein Schlafproblem hat (1 = ja; 0 = nein)
+\item
+  \texttt{coffee\_drinker}: gibt an, ob eine Person regelmäßig Kaffee trinkt (1 = ja, Kaffeetrinker; 0 = kein Kaffeetrinker)
+\item
+  \texttt{alcohol}: jährlichen Ausgaben für Alkohol
+\item
+  \texttt{income}: das Jahreseinkommen
+\end{itemize}
+
+Dieser Datensatz steht im Blackboard zum Download zur Verfügung (\emph{sleep\_data.csv}).
+
+\subsection{Datenvorverarbeitung}\label{datenvorverarbeitung}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{rm}\NormalTok{(}\AttributeTok{list =} \FunctionTok{ls}\NormalTok{())}
+  \FunctionTok{options}\NormalTok{(}\AttributeTok{digits =} \DecValTok{3}\NormalTok{) }
+  \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{require}\NormalTok{(}\StringTok{"pacman"}\NormalTok{)) }\FunctionTok{install.packages}\NormalTok{(}\StringTok{"pacman"}\NormalTok{)}
+\NormalTok{  pacman}\SpecialCharTok{::}\FunctionTok{p\_load}\NormalTok{(dplyr, ggplot2, pROC, psych, readr, stats)}
+\NormalTok{  sleep\_data }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"Daten/sleep\_data.csv"}\NormalTok{, }\AttributeTok{show\_col\_types =} \ConstantTok{FALSE}\NormalTok{)}
+  \CommentTok{\# sleep\_data \textless{}{-} sleep\_data \%\textgreater{}\% }
+  \CommentTok{\#   dplyr::mutate(sleep\_problem  = ifelse(sleep\_problem  == 1, "Yes", "No"))\%\textgreater{}\% }
+  \CommentTok{\#   dplyr::mutate(coffee\_drinker = ifelse(coffee\_drinker == 1, "Yes", "No"))}
+\NormalTok{  sleep\_data}\SpecialCharTok{$}\NormalTok{sleep\_problem }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(sleep\_data}\SpecialCharTok{$}\NormalTok{sleep\_problem, }
+                                     \AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{),}
+                                     \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"No"}\NormalTok{, }\StringTok{"Yes"}\NormalTok{))}
+\NormalTok{  sleep\_data}\SpecialCharTok{$}\NormalTok{coffee\_drinker }\OtherTok{\textless{}{-}} \FunctionTok{factor}\NormalTok{(sleep\_data}\SpecialCharTok{$}\NormalTok{coffee\_drinker, }
+                                     \AttributeTok{levels =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{1}\NormalTok{),}
+                                     \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"No"}\NormalTok{, }\StringTok{"Yes"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Um den Zusammenhang zwischen den einzelnen Prädiktoren und Schlafstörung besser zu verstehen, sollte man vor der Analyse die Daten deskriptiv (Tabellen, Kennwerte und Graphiken) betrachten. Wir erstellen dazu im ersten Schritt Graphiken.
+
+\subsubsection{Schlafprobleme und Alkohol}\label{schlafprobleme-und-alkohol}
+
+Offenbar haben Personen, die viel Geld für Alkohol ausgeben auch häufiger Schlafprobleme. Beachtenswert sind sowohl bei den Personen die über keine Schlafprobleme berichten, einige mit sehr hohen Ausgaben für Alkohol dabei sind, aber auch ein paar Leute wenig Geld ausgeben, aber trotzdem Schalfprobleme haben. Wie könnte man das deuten?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ sleep\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ sleep\_problem, }
+                                \AttributeTok{y =}\NormalTok{ alcohol\_spend, }
+                                \AttributeTok{fill =}\NormalTok{ sleep\_problem)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{() }\SpecialCharTok{+} 
+    \FunctionTok{xlab}\NormalTok{(}\StringTok{"Sleep Problem (Y/N)"}\NormalTok{) }\SpecialCharTok{+} 
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Annual expenditure on alcohol"}\NormalTok{) }\SpecialCharTok{+} 
+    \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Figure 1: Alcohol expenditures and Sleep Problems"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{theme\_bw}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{01_LogisticRegression_files/figure-latex/Sleep_Boxplot_1-1.pdf}
+
+\subsubsection{Schlafprobleme und Einkommen}\label{schlafprobleme-und-einkommen}
+
+Das Einkommen dürfte keinen beachtenswerten Einfluss auf die Schlafprobleme haben.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ sleep\_data, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ sleep\_problem, }\AttributeTok{y =}\NormalTok{ income, }\AttributeTok{fill =}\NormalTok{ sleep\_problem)) }\SpecialCharTok{+} 
+    \FunctionTok{geom\_boxplot}\NormalTok{() }\SpecialCharTok{+} 
+    \FunctionTok{xlab}\NormalTok{(}\StringTok{"Sleep Problem (Y/N)"}\NormalTok{) }\SpecialCharTok{+} 
+    \FunctionTok{ylab}\NormalTok{(}\StringTok{"Income"}\NormalTok{) }\SpecialCharTok{+} 
+    \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Figure 2: Income and and Sleep Problems"}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{theme\_bw}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{01_LogisticRegression_files/figure-latex/Sleep_Boxplot_2-1.pdf}
+
+\subsubsection{Schlafprobleme und Kaffe}\label{schlafprobleme-und-kaffe}
+
+Hier kann man einen Effekt des Kaffees feststellen. Offenbar hat ein höherer Anteil an Personen die Kaffeetrinker sind Schlafprobleme. Ob der Unterschied zwischen den beiden Gruppen statistisch bedeutsam ist, bleibt noch zu zeigen!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  sleep\_data }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{      dplyr}\SpecialCharTok{::}\FunctionTok{group\_by}\NormalTok{(sleep\_problem, coffee\_drinker) }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{      dplyr}\SpecialCharTok{::}\FunctionTok{summarise}\NormalTok{(}\AttributeTok{count =} \FunctionTok{n}\NormalTok{()) }\SpecialCharTok{\%\textgreater{}\%} 
+      \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{      dplyr}\SpecialCharTok{::}\FunctionTok{group\_by}\NormalTok{(coffee\_drinker) }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{      dplyr}\SpecialCharTok{::}\FunctionTok{mutate}\NormalTok{(}\AttributeTok{total\_coffee\_drinkers =} \FunctionTok{sum}\NormalTok{(count)) }\SpecialCharTok{\%\textgreater{}\%} 
+      \FunctionTok{ungroup}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{      dplyr}\SpecialCharTok{::}\FunctionTok{mutate}\NormalTok{(}\AttributeTok{proportion =}\NormalTok{ count }\SpecialCharTok{/}\NormalTok{ total\_coffee\_drinkers) }\SpecialCharTok{\%\textgreater{}\%} 
+\NormalTok{      dplyr}\SpecialCharTok{::}\FunctionTok{filter}\NormalTok{(sleep\_problem }\SpecialCharTok{==} \StringTok{"Yes"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+      \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ coffee\_drinker, }\AttributeTok{y =}\NormalTok{ proportion, }\AttributeTok{fill =}\NormalTok{ coffee\_drinker)) }\SpecialCharTok{+} 
+      \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{) }\SpecialCharTok{+} 
+      \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+      \FunctionTok{ylab}\NormalTok{(}\StringTok{"Percent with Sleep Problems"}\NormalTok{) }\SpecialCharTok{+}
+      \FunctionTok{xlab}\NormalTok{(}\StringTok{"Coffee Drinker (Y/N)"}\NormalTok{) }\SpecialCharTok{+}
+      \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Figure 3: Percent of Coffee Drinkers with Sleep Problems"}\NormalTok{) }\SpecialCharTok{+}
+      \FunctionTok{labs}\NormalTok{(}\AttributeTok{fill =} \StringTok{"Coffee Drinker"}\NormalTok{) }\SpecialCharTok{+} 
+      \FunctionTok{scale\_y\_continuous}\NormalTok{(}\AttributeTok{labels =}\NormalTok{ scales}\SpecialCharTok{::}\NormalTok{percent)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` has grouped output by 'sleep_problem'. You can override using the
+## `.groups` argument.
+\end{verbatim}
+
+\includegraphics{01_LogisticRegression_files/figure-latex/Sleep_Barplot-1.pdf}
+
+\subsection{Modellanpassung}\label{modellanpassung}
+
+Die Anpassung eines logistischen Regressionsmodells in \textbf{R} ist der linearen Regression sehr ähnlich.
+
+Statt der Funktion \texttt{lm()} verwenden wir die Funktion \texttt{glm()} für \textbf{G}eneralized \textbf{L}inear \textbf{M}odells (verallgemeinerte lineare Modelle).
+
+Zusätzlich zu den Formel- und Datenargumenten benötigt die \texttt{glm()}-Funktion das Argument \emph{family}, mit der die \emph{Verteilungs}- und \emph{Link}-funktion definiert wird. Die Verwendung des Arguments \texttt{family\ =\ binomial} teilt \textbf{R} mit, dass eine logistische Regression anstelle eines anderen GLM-Typs durchführt werden soll.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  log\_reg }\OtherTok{\textless{}{-}} \FunctionTok{glm}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ sleep\_problem }\SpecialCharTok{\textasciitilde{}}\NormalTok{ coffee\_drinker }\SpecialCharTok{+} 
+\NormalTok{                                           alcohol\_spend }\SpecialCharTok{+}
+\NormalTok{                                           income,}
+                    \AttributeTok{data =}\NormalTok{ sleep\_data,}
+                  \AttributeTok{family =} \FunctionTok{binomial}\NormalTok{(}\AttributeTok{link =} \StringTok{\textquotesingle{}logit\textquotesingle{}}\NormalTok{))}
+  \FunctionTok{summary}\NormalTok{(log\_reg)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## glm(formula = sleep_problem ~ coffee_drinker + alcohol_spend + 
+##     income, family = binomial(link = "logit"), data = sleep_data)
+## 
+## Coefficients:
+##                    Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)       -1.09e+01   4.92e-01  -22.08   <2e-16 ***
+## coffee_drinkerYes -6.47e-01   2.36e-01   -2.74   0.0062 ** 
+## alcohol_spend      2.29e-03   9.28e-05   24.74   <2e-16 ***
+## income             3.03e-06   8.20e-06    0.37   0.7115    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 2920.6  on 9999  degrees of freedom
+## Residual deviance: 1571.5  on 9996  degrees of freedom
+## AIC: 1580
+## 
+## Number of Fisher Scoring iterations: 8
+\end{verbatim}
+
+Die Tabelle enthält weniger Informationen als beim linearen Modell, da die Verteilung der Abweichungsresiduen nicht so wichtig ist und es kein \(R^2\) gibt, da es für die logistische Regression nicht definiert ist.
+
+Die Koeffizienten entsprechen der Veränderung der \emph{logarithmischen Quoten} für eine Erhöhung des Prädiktors um eine Einheit. Die \(p\)-Werte werden ähnlich wie bei der linearen Regression interpretiert - im Wesentlichen zeigen kleine p-Werte an, dass wir die \(H_0\) ablehnen, also dass die abhängige Variable nicht vom Prädiktor abhängt.
+
+Wir können also daraus schließen, dass ein Zusammenhang zwischen dem Prädiktor und der abhängigen Variablen (Schlafprobleme) besteht. Für die vorliegenden Ergebnisse bedeutet das:
+
+\begin{itemize}
+\item
+  \textbf{Intercept}: Der geschätzte Achsenabschnitt ist normalerweise nicht von Interesse
+\item
+  \textbf{Kaffeetrinker}: Kaffee trinken hat einen Koeffizienten \(b_1 = -0.65\), was bedeutet, dass Kaffeetrinken mit einer Verringerung der Wahrscheinlichkeit von Schlafproblemen verbunden ist. Konkret bedeutet dies, dass die Wahrscheinlichkeit von Schlafproblemen (im Vergleich zu Nicht-Kaffeetrinkern) um einen multiplikativen Faktor von \(e^{-0.65}\) oder \(0.52\) abnimmt, wenn alle anderen Prädiktoren unverändert bleiben.Dieser Zusammenhang scheint signifikant zu sein.
+\item
+  \textbf{Ausgaben für Alkohol}: Ein Anstieg der Ausgaben für Alkohol um eine Einheit ist mit einem Anstieg der logarithmischen Wahrscheinlichkeit, an einer Schlafstörung zu leiden, um \(0.0023\) verbunden.
+\item
+  \textbf{Einkommen}: Ein p-Wert von \(0.71\) lässt den Schluss zu, dass das Einkommen nicht signifikant mit Schlafproblemen verbunden ist.
+\end{itemize}
+
+Unser Modell sagt uns, dass Kaffeetrinken eine \emph{Verringerung} der Wahrscheinlichkeit (likelihood) für Schlafstörungen bewirkt. Obige Grafik zeigt jedoch, dass der Anteil der Kaffeetrinker mit Herzkrankheiten höher war als der der Nicht-Kaffeetrinkern. Wie kann das sein?
+
+\subsubsection{Zusammenhang der Prädiktoren}\label{zusammenhang-der-pruxe4diktoren}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  PredCor }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(sleep\_data}\SpecialCharTok{$}\NormalTok{alcohol\_spend, }
+                  \FunctionTok{as.numeric}\NormalTok{(sleep\_data}\SpecialCharTok{$}\NormalTok{coffee\_drinker) }\SpecialCharTok{{-}} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Im vorliegenden Fall sind \emph{Kaffeetrinken} und \emph{Ausgaben für Alkohol} korreliert (\(r = 0.204\)). Dadurch hat es den Anschein, dass Kaffetrinken einen günstigen Effekt auf die Schlafstörung hat und der Alkohol als positiver und signifikanter Effekt die Schlafstörung maßgeblich beeinflusst (\emph{Bemerkung:} das Einkommen ist ja nicht signifikant!).
+
+\subsection{Vorhersagen}\label{vorhersagen}
+
+Angenommen, eine bestimmte Person ist Kaffeetrinker, gibt 5.000 pro Jahr für Alkohol aus und hat ein Jahreseinkommen von 60.000 Euro. Wie hoch wäre die vorhergesagte Wahrscheinlichkeit für eine Schlafstörung auf Basis des Modells?
+
+\[
+p(X) = \frac{e^{-10.09 - 0.65 + 0.0023 \times 5000 + 0.00000303 \times 60000}}{1 + e^{-10.09 - 0.65 + 0.0023 \times 5000 + 0.00000303 \times 60000}} = 0.535
+\]
+
+\subsection{Vorhersagen mit unserem logistischen Modell}\label{vorhersagen-mit-unserem-logistischen-modell}
+
+Um Vorhersagen durch das Modell mit \textbf{R} zu berechnen, verwenden wir die \texttt{predict()}-Funktion. Die Option \texttt{type\ =\ "response"} sorgt dafür, dass \textbf{R} die Wahrscheinlichkeiten in der Form \(P(Y=1|X)\) ausgibt.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  test\_obs }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{coffee\_drinker =} \StringTok{"Yes"}\NormalTok{,}
+                          \AttributeTok{alcohol\_spend =} \DecValTok{5000}\NormalTok{,}
+                                 \AttributeTok{income =} \DecValTok{60000}\NormalTok{)}
+  \FunctionTok{predict}\NormalTok{(log\_reg, }\AttributeTok{type =} \StringTok{"response"}\NormalTok{, test\_obs)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     1 
+## 0.535
+\end{verbatim}
+
+\subsection{Von Wahrscheinlichkeiten zu Klassifikationen}\label{von-wahrscheinlichkeiten-zu-klassifikationen}
+
+Wir haben jetzt vorhergesagte Wahrscheinlichkeiten, aber wir müssen diese noch in Klassifikationen umwandeln. Mit anderen Worten: Sobald du eine vorhergesagte Wahrscheinlichkeit hast, wie entscheidest du, ob diese als „1`` (Schlafproblem) oder als „0`` (kein Schlafproblem) eingestuft werden soll?
+
+Man könnte alle Personen mit einer vorhergesagten Wahrscheinlichkeit größer als \(P(Y=1|X) > 0.50\) als ``1'' einstufen, und alle mit einer Wahrscheinlichkeit kleiner als \(P(Y=1|X) \leq 0.50\) als ``0''.
+
+Als Entscheidungs-Schwellenwert (engl. \emph{prediction threshold}) würde man also den Wert 0,50 bestimmen. Allerdings ist es nicht immer so einfach, wie im nachfolgenden Beispiel gezeigt wird.
+
+\subsection{Modellevaluierung}\label{modellevaluierung}
+
+\subsubsection{Genauigkeit (Accuracy)}\label{genauigkeit-accuracy-1}
+
+Die Genauigkeit (Accuracy) des Modells ist definiert als die Gesamtanzahl der korrekt vorhergesagten Fälle, geteilt durch die Gesamtanzahl der Beobachtungen. Betrachten wir zunächst die Genauigkeit des Modells für verschiedene Werte des Entscheidungsschwellenwerts:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  pred\_probs }\OtherTok{\textless{}{-}} \FunctionTok{predict}\NormalTok{(log\_reg, }\AttributeTok{type =} \StringTok{"response"}\NormalTok{)}
+  \FunctionTok{head}\NormalTok{(}\FunctionTok{round}\NormalTok{(pred\_probs, }\DecValTok{3}\NormalTok{), }\AttributeTok{n =} \DecValTok{10}\NormalTok{) }\CommentTok{\# Print first 10 probabilities}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     1     2     3     4     5     6     7     8     9    10 
+## 0.001 0.001 0.010 0.000 0.002 0.002 0.002 0.001 0.016 0.000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  thresh\_1 }\OtherTok{\textless{}{-}} \FloatTok{0.01}
+\NormalTok{  thresh\_2 }\OtherTok{\textless{}{-}} \FloatTok{0.25}
+\NormalTok{  thresh\_3 }\OtherTok{\textless{}{-}} \FloatTok{0.50}
+\NormalTok{  thresh\_4 }\OtherTok{\textless{}{-}} \FloatTok{1.00}
+
+\NormalTok{  accuracy\_1 }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\FunctionTok{ifelse}\NormalTok{(pred\_probs }\SpecialCharTok{\textgreater{}}\NormalTok{ thresh\_1, }
+                           \StringTok{"Yes"}\NormalTok{, }
+                           \StringTok{"No"}\NormalTok{) }\SpecialCharTok{==}\NormalTok{ sleep\_data}\SpecialCharTok{$}\NormalTok{sleep\_problem) }\SpecialCharTok{/} \FunctionTok{nrow}\NormalTok{(sleep\_data)}
+\NormalTok{  accuracy\_2 }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\FunctionTok{ifelse}\NormalTok{(pred\_probs }\SpecialCharTok{\textgreater{}}\NormalTok{ thresh\_2, }
+                           \StringTok{"Yes"}\NormalTok{, }
+                           \StringTok{"No"}\NormalTok{) }\SpecialCharTok{==}\NormalTok{ sleep\_data}\SpecialCharTok{$}\NormalTok{sleep\_problem) }\SpecialCharTok{/} \FunctionTok{nrow}\NormalTok{(sleep\_data)}
+\NormalTok{  accuracy\_3 }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\FunctionTok{ifelse}\NormalTok{(pred\_probs }\SpecialCharTok{\textgreater{}}\NormalTok{ thresh\_3, }
+                           \StringTok{"Yes"}\NormalTok{, }
+                           \StringTok{"No"}\NormalTok{) }\SpecialCharTok{==}\NormalTok{ sleep\_data}\SpecialCharTok{$}\NormalTok{sleep\_problem) }\SpecialCharTok{/} \FunctionTok{nrow}\NormalTok{(sleep\_data)}
+\NormalTok{  accuracy\_4 }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(}\FunctionTok{ifelse}\NormalTok{(pred\_probs }\SpecialCharTok{\textgreater{}}\NormalTok{ thresh\_4, }
+                           \StringTok{"Yes"}\NormalTok{, }
+                           \StringTok{"No"}\NormalTok{) }\SpecialCharTok{==}\NormalTok{ sleep\_data}\SpecialCharTok{$}\NormalTok{sleep\_problem) }\SpecialCharTok{/} \FunctionTok{nrow}\NormalTok{(sleep\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+Allgemein ist man bestrebt, eine möglichst hohe Genauigkeit des Modells zu erreichen. In vorliegenden Fall beträgt die Accuracy bei 0.01 = 0.748, bei 0.25 = 0.966, usw.
+
+Betrachten wir nun den vierten Schwellenwert 1. Das bedeutet, dass wir nur dann vorhersagen würden, dass eine Person eine Schlafstörung hat, wenn die vom Modell vorhergesagte Wahrscheinlichkeit für diese Person größer als 1.00 ist. \textbf{Das ist aber unmöglich!}
+
+Mit anderen Worten: Wir würden niemals vorhersagen, dass jemand eine Schlafstörung hat. Dennoch beträgt unsere Genauigkeit immer noch 96.67\%.
+
+Das wäre sicher \textbf{kein gutes Klassifikationsmodell}!
+
+Da unser Datensatz \emph{unausgewogen} ist (nur ein kleiner Prozentsatz der Personen hat eine Schlafstörung - etwa 3,3\%), können wir eine hohe Genauigkeit erzielen, indem wir einfach nie vorhersagen, dass jemand eine Schlafstörung hat. Deshalb ist die Genauigkeit in diesem Fall kein ausreichendes Kriterium, um unser Klassifikationsmodell zu beurteilen.
+
+\subsubsection{Sensitivität, Spezifität und die Konfusionsmatrix}\label{sensitivituxe4t-spezifituxe4t-und-die-konfusionsmatrix}
+
+Die Konfusionsmatrix unterteilt das Klassifikationsmodell in \emph{True Positives} (\(TP\), wahre Positive), \emph{True Negatives} (\(TN\), wahre Negative), \emph{False Positives} (\(FP\), falsch Positive) und \emph{False Negatives} (\(FN\), falsch Negative).
+
+Die \emph{Sensitivität} eines Klassifikationsmodells ist definiert als der Anteil der wahren Positiven.
+
+\[\text{Sensitivität} = \frac{TP}{TP + FN}\]
+
+\textbf{Sensitivität misst also, wie gut ein Modell positive Fälle tatsächlich erkennt.}
+
+Die \emph{Spezifität} eines Klassifikationsmodells ist definiert als der Anteil der wahren Negativen.
+
+\[\text{Spezitivität} = \frac{TN}{FP + TN}\]
+
+\textbf{Die Spezifität misst also, wie gut ein Modell negative Fälle korrekt identifiziert.}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth,height=\textheight]{Images/Konfussionsmatrix.jpg}
+\caption{\textbf{Abbildung 2}: Wahrheistmatrix (Konfusionsmatrix)}
+\end{figure}
+
+Betrachten wir die Konfusionsmatrix für zwei Entscheidungsschwellenwerte, nämlich 0.01 und 0.25 und vergleichen anschließend die Ergebnisse:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{data.frame}\NormalTok{(   }\AttributeTok{actual =}\NormalTok{ sleep\_data}\SpecialCharTok{$}\NormalTok{sleep\_problem,}
+             \AttributeTok{predicted =} \FunctionTok{ifelse}\NormalTok{(pred\_probs }\SpecialCharTok{\textgreater{}}\NormalTok{ thresh\_1, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{table}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       predicted
+## actual    0    1
+##    No  7163 2504
+##    Yes   12  321
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \CommentTok{\#\textgreater{}       predicted}
+  \CommentTok{\#\textgreater{} actual    0    1}
+  \CommentTok{\#\textgreater{}      0 7163 2504}
+  \CommentTok{\#\textgreater{}      1   12  321}
+  \CommentTok{\#++++++++++++++++++++++++++++++++}
+  \CommentTok{\# Sensitivität}
+\NormalTok{  Sensitivität1 }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{((}\DecValTok{321} \SpecialCharTok{/}\NormalTok{ (}\DecValTok{321} \SpecialCharTok{+} \DecValTok{12}\NormalTok{))}\SpecialCharTok{*}\DecValTok{100}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+  \CommentTok{\#\textgreater{} [1] 0.963964}
+  \CommentTok{\#++++++++++++++++++++++++++++++++  }
+  \CommentTok{\# Spezifität}
+  \FunctionTok{round}\NormalTok{((}\DecValTok{7163} \SpecialCharTok{/}\NormalTok{ (}\DecValTok{7163} \SpecialCharTok{+} \DecValTok{2504}\NormalTok{))}\SpecialCharTok{*}\DecValTok{100}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 74.1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \CommentTok{\#\textgreater{} [1] 0.7409744}
+  \CommentTok{\#++++++++++++++++++++++++++++++++  }
+  \CommentTok{\# {-}{-}{-} 0.25 Threshold {-}{-}{-}}
+  \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{actual =}\NormalTok{ sleep\_data}\SpecialCharTok{$}\NormalTok{sleep\_problem,}
+             \AttributeTok{predicted =} \FunctionTok{ifelse}\NormalTok{(pred\_probs }\SpecialCharTok{\textgreater{}}\NormalTok{ thresh\_2, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{table}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       predicted
+## actual    0    1
+##    No  9477  190
+##    Yes  149  184
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \CommentTok{\#\textgreater{}       predicted}
+  \CommentTok{\#\textgreater{} actual    0    1}
+  \CommentTok{\#\textgreater{}      0 9477  190}
+  \CommentTok{\#\textgreater{}      1  149  184}
+  \CommentTok{\#++++++++++++++++++++++++++++++++  }
+  \CommentTok{\# Sensitivität}
+  \FunctionTok{round}\NormalTok{((}\DecValTok{184} \SpecialCharTok{/}\NormalTok{ (}\DecValTok{184} \SpecialCharTok{+} \DecValTok{149}\NormalTok{))}\SpecialCharTok{*}\DecValTok{100}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 55.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \CommentTok{\#\textgreater{} [1] 0.5525526}
+  \CommentTok{\#++++++++++++++++++++++++++++++++  }
+  \CommentTok{\# Spezifität}
+  \FunctionTok{round}\NormalTok{((}\DecValTok{9477} \SpecialCharTok{/}\NormalTok{ (}\DecValTok{9477} \SpecialCharTok{+} \DecValTok{190}\NormalTok{))}\SpecialCharTok{*}\DecValTok{100}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 98
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \CommentTok{\#\textgreater{} [1] 0.9803455}
+  \CommentTok{\#++++++++++++++++++++++++++++++++}
+\end{Highlighting}
+\end{Shaded}
+
+Wir halten fest:
+
+\begin{itemize}
+\item
+  Ein Schwellenwert (Threshold) von 0.01 identifiziert nahezu alle tatsächlichen Fälle mit Schlafproblemen korrekt (Sensitivität = \(Sensitivität1\)\%). Allerdings wird auch häufig vorhergesagt, dass jemand ein Schlafproblem hat, obwohl dies nicht der Fall ist (hohe Anzahl an falsch-positiven Ergebnissen).
+\item
+  Ein Schwellenwert von 0.25 übersieht hingegen oft Personen mit tatsächlicher Schlafproblemen, sagt aber im Gegenzug selten fälschlicherweise Schlafproblemen bei gesunden Personen voraus.
+\end{itemize}
+
+\paragraph{Zusammenfassung}\label{zusammenfassung-1}
+
+Welcher Schwellenwert ist also besser?
+
+Wenn das Ziel darin besteht, möglichst viele Personen mit tatsächlicher Schlafproblem zu identifizieren, um zum Beispiel frühzeitig eingreifen und den Lebensstil oder die Gesundheit beeinflussen zu können, könnte ein Schwellenwert von 0.01 sinnvoll sein. So werden mehr betroffene Personen erkannt. Allerdings geht dies mit dem Nachteil einher, dass sehr viele Menschen unnötig gewarnt werden und dadurch Stress entsteht oder zusätzliche Kosten für die Versicherung anfallen, weil Personen getestet werden, die eigentlich gesund sind.
+
+Was ist der größere Fehler?
+
+Ist es schlimmer, Menschen zu sagen, sie könnten eine Schlafproblem haben, und sie sollten unbedingt weitere, langwierige und kostspielige Untersuchungen machen lassen, obwohl sie gar kein Problem haben? Oder ist es schlimmer, betroffene Personen nicht zu erkennen, sodass diese nicht getestet und behandelt werden? Wenn das Verpassen von Betroffenen der größere Fehler ist, sollte man einen niedrigeren Schwellenwert wie 0,01 wählen, um bei der Identifikation besonders vorsichtig zu sein.
+
+\subsubsection{ROC \& AUC}\label{roc-auc}
+
+Man kann die Vorhersagekraft eines Klassifikationsmodells auch visualisieren und quantifizieren, ohne vorher einen bestimmten Schwellenwert festzulegen. Wenn man die \emph{Sensitivität} gegen die \emph{Falsch-Positiv-Rate} (False Positive Rate) des Modells über beliebig viele \emph{Schwellenwerte} hinweg aufträgt, erhält man die \emph{Receiver-Operating-Characteristic-Kurve}, kurz \textbf{ROC-Kurve}. Die Fläche unter dieser Kurve, auch \textbf{AUC} (Area Under the Curve) genannt, ist eine weit verbreitete Kennzahl zum Vergleich von Klassifikationsmodellen.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \CommentTok{\# library(pROC)}
+\NormalTok{  true\_labels }\OtherTok{\textless{}{-}}\NormalTok{ sleep\_data}\SpecialCharTok{$}\NormalTok{sleep\_problem}
+  \CommentTok{\# ROC{-}Kurve}
+\NormalTok{  roc\_obj }\OtherTok{\textless{}{-}} \FunctionTok{roc}\NormalTok{(true\_labels, pred\_probs)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Setting levels: control = No, case = Yes
+\end{verbatim}
+
+\begin{verbatim}
+## Setting direction: controls < cases
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{plot}\NormalTok{(roc\_obj, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{, }\AttributeTok{main=}\StringTok{"ROC{-}Kurve"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{01_LogisticRegression_files/figure-latex/ROC-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \FunctionTok{auc}\NormalTok{(roc\_obj)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Area under the curve: 0.95
+\end{verbatim}
+
+Für eine ausführliche Beschreibung der ROC und AUC siehe \href{https://developers.google.com/machine-learning/crash-course/classification/roc-and-auc?hl=de}{Klassifizierung: ROC und AUC}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-OPTUM}
+B. Machut, N. Cornwell. 2022. {``Data Analytics with r.''} \url{https://bookdown.org/brianmachut/uofm_analytics_r_hw_sol_2/\#welcome}.
+
+\bibitem[\citeproctext]{ref-Berry}
+Berry, W. D. 1993. {``Understanding Regression Assumptions.''} \emph{Sage}.
+
+\bibitem[\citeproctext]{ref-Buehner1}
+Bühner, M. 2009. \emph{Statistik Für Psychologen Und Sozialwissenschaftler}. Erste Auflage. Martin-Kollar-Str. 10-12, D-81829 München/Germany: Pearson Education Deutschland GmbH.
+
+\bibitem[\citeproctext]{ref-Buehner2}
+---------. 2017. \emph{Statistik Für Psychologen Und Sozialwissenschaftler}. Zweite Auflage. Lilienthalstraße 2, 85399 Hallbergmoos, Germany: Pearson Deutschland GmbH.
+
+\bibitem[\citeproctext]{ref-DataCamp}
+DataCamp. 2018. {``DataCamp Learn Data Science.''} \url{https://www.datacamp.com/}.
+
+\bibitem[\citeproctext]{ref-Field}
+Field, A. 2017. \emph{Discovering Statistics Using r}. 2nd ed. 1 Olivers Yard, 55 City Road, London EC1Y 1SP: SAGE Publications Ltd.
+
+\bibitem[\citeproctext]{ref-Menart}
+Menart, S. 2002. {``Applied Logistic Regression Analysis.''} \emph{Sage Publications}.
+
+\bibitem[\citeproctext]{ref-DataTab}
+Team-DATAtab. 2025. {``DATAtab: Online Statistics Calculator. DATAtab e.u. Graz, Austria.''} \url{https://datatab.de/tutorial/logistische-regression}.
+
+\end{CSLReferences}
+
+\end{document}
