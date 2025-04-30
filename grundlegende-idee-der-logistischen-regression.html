@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Grundlegende Idee der logistischen Regression | M</title>
+  <meta name="description" content="Grundlegende Idee der logistischen Regression | Methodenlehre und Statistik 3" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Grundlegende Idee der logistischen Regression | M" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/Images/Cover.png" />
+  <meta property="og:description" content="Grundlegende Idee der logistischen Regression | Methodenlehre und Statistik 3" />
+  <meta name="github-repo" content="wgruber/LogisticRegression" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Grundlegende Idee der logistischen Regression | M" />
+  
+  <meta name="twitter:description" content="Grundlegende Idee der logistischen Regression | Methodenlehre und Statistik 3" />
+  <meta name="twitter:image" content="/Images/Cover.png" />
+
+<meta name="author" content="W. R. Gruber" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="motivation.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Logistische Regression</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Vorbemerkung</a></li>
+<li class="chapter" data-level="" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i>Motivation</a>
+<ul>
+<li class="chapter" data-level="" data-path="motivation.html"><a href="motivation.html#beispiel-aus-der-psychologie"><i class="fa fa-check"></i>Beispiel aus der Psychologie</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="grundlegende-idee-der-logistischen-regression.html"><a href="grundlegende-idee-der-logistischen-regression.html"><i class="fa fa-check"></i>Grundlegende Idee der logistischen Regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="grundlegende-idee-der-logistischen-regression.html"><a href="grundlegende-idee-der-logistischen-regression.html#einführendes-beispiel"><i class="fa fa-check"></i>Einführendes Beispiel</a></li>
+<li class="chapter" data-level="" data-path="grundlegende-idee-der-logistischen-regression.html"><a href="grundlegende-idee-der-logistischen-regression.html#modellierung-kategorieller-zielvariablen"><i class="fa fa-check"></i>Modellierung kategorieller Zielvariablen</a></li>
+<li class="chapter" data-level="" data-path="grundlegende-idee-der-logistischen-regression.html"><a href="grundlegende-idee-der-logistischen-regression.html#ein-weiteres-beispiel"><i class="fa fa-check"></i>Ein weiteres Beispiel</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://wgruber.github.io/LogisticRegression" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">M</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="grundlegende-idee-der-logistischen-regression" class="section level1 unnumbered hasAnchor">
+<h1>Grundlegende Idee der logistischen Regression<a href="grundlegende-idee-der-logistischen-regression.html#grundlegende-idee-der-logistischen-regression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Im Unterschied zur bekannten linearen Regression, werden also anstatt stetiger Werte nun diskrete Werte ausgegeben. In der einfachsten Form der logistischen Regression können somit dichotome Variablen (0 oder 1) prognostiziert werden. Wenn wir also nur zwei Kategorien vorhersagen, wird das Modell als <strong>binäre logistische Regression</strong> bezeichnet.</p>
+<p>Wenn wir versuchen, die Zugehörigkeit zu mehr als zwei Kategorien vorher zusagen wollen, verwenden wir die <strong>multinomiale</strong> (oder <strong>polychotome</strong>) <strong>logistische Regression</strong><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.</p>
+<div id="einführendes-beispiel" class="section level2 hasAnchor">
+<h2>Einführendes Beispiel<a href="grundlegende-idee-der-logistischen-regression.html#einführendes-beispiel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Nehmen wir an, dass wir den Erfolg von Therapeuten bei der Behandlung einer bestimmten psychischen Störung vorhersagen wollen. Der Erfolg entspricht dabei einem binären Ergebnis:</p>
+<ul>
+<li>Misserfolg der Behandlung (<em>Therapieerfolg</em> = 0)</li>
+<li>Erfolg der Behandlung (<em>Therapieerfolg</em> = 1).</li>
+</ul>
+<p>Wir gehen des Weiteren davon aus, dass vergangene Erfolge wahrscheinlich ein starker Prädiktor für den aktuellen Therapieerfolge sind. Wenn also Therapeut:innen in der Vergangenheit erfolgreich waren, dann werden diese wahrscheinlich auch in der Zukunft erfolgreich sein. Es liegen uns die Daten über den prozentualen Anteil der früheren Erfolge von 75 Therapeuten vor (<em>Erfolgsrate</em>), sowie der aktuellen <em>Therapieerfolg</em> (mit 0 = Nein = Misserfolg und 1 = Ja = Erfolg).</p>
+<pre><code>## # A tibble: 6 × 2
+##   Erfolgsrate Therapierfolg
+##         &lt;dbl&gt; &lt;fct&gt;        
+## 1          15 Ja           
+## 2          23 Ja           
+## 3          33 Ja           
+## 4          35 Ja           
+## 5          35 Ja           
+## 6          35 Ja</code></pre>
+<p>Die Werte der Variablen Therapieerfolg entsprechen damit den Grenzen der Wahrscheinlichkeit eines Erfolges. Wenn jemand einen Misserfolg hat, ist die Wahrscheinlichkeit = 0 (Therapie hat definitiv nicht geholfen), und bei einer erfolgreichen Therapie = 1 (Therapie hat definitiv geholfen).</p>
+<p>Wenn wir nun die vergangenen Erfolge in 10 Intervalle teilen (0-10], (10-20], …, (90-100] und für jedes dieser Intervalle zählen, wie viele aktuelle Thearpieerfolge diesen Intervallen zuzuordnen sind, erhalten wir folgende Übersichtstabelle. Bei dieser Tabelle sind neben den gezählten Erfogen auch die prozentuellen Anteile der Erfolge je Intervall, sowie die kumumlierten Erfolgen angegeben:</p>
+<pre><code>## # A tibble: 9 × 4
+##   bin     AnzErfolg AnteilErfolg KumAnt
+##   &lt;fct&gt;       &lt;dbl&gt;        &lt;dbl&gt;  &lt;dbl&gt;
+## 1 (0,10]          0        0      0    
+## 2 (10,20]         1        0.025  0.025
+## 3 (20,30]         1        0.025  0.05 
+## 4 (30,40]         7        0.175  0.225
+## 5 (40,50]         9        0.225  0.45 
+## 6 (50,60]         6        0.15   0.6  
+## 7 (60,70]         8        0.2    0.8  
+## 8 (70,80]         5        0.125  0.925
+## 9 (80,90]         3        0.075  1</code></pre>
+<p>Die folgende Abbildung zeigt für jeden Wert des bisherigen Erfolgs, ob die Therapeuten bei der aktuellen Therapie einen Erfolg erzielen (Dreiecke) oder nicht (Kreise). Beachten Sie, dass es nur zwei mögliche Werte für das Ergebnis gibt: 0 (kein Erfolg / die Wahrscheinlichkeit eines Erfoges ist 0) und 1 (Erfolg / die Wahrscheinlichkeit eines Erfolges ist 1).</p>
+</div>
+<div id="modellierung-kategorieller-zielvariablen" class="section level2 hasAnchor">
+<h2>Modellierung kategorieller Zielvariablen<a href="grundlegende-idee-der-logistischen-regression.html#modellierung-kategorieller-zielvariablen" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Betrachten wir zunächst nochmals das einfache lineare Modell.</p>
+<p><span class="math display">\[Y_i = b_0 + b_1 \cdot X_i + \varepsilon_i\]</span>
+Bei mehr als einen Prädiktor gilt:</p>
+<p><span class="math display">\[Y_i = b_0 + b_1 \cdot X_{1i} + \cdots + b_k \cdot X_{ki} + \varepsilon_i\]</span></p>
+</div>
+<div id="ein-weiteres-beispiel" class="section level2 hasAnchor">
+<h2>Ein weiteres Beispiel<a href="grundlegende-idee-der-logistischen-regression.html#ein-weiteres-beispiel" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Als Mitarbeiter einer groß angelegten Schlafstudie haben Sie die Aufgabe, die Faktoren, die zu Schlafstörung führen, besser zu verstehen. Außerdem möchten Sie dieses Wissen nutzen, um bei Vorliegen einer Schlafstörung eingreifen und die Gesundheit und Lebensqualität dieser Personen verbessern zu können. Sie möchten also die Wahrscheinlichkeit vorhersagen können, dass eine Person mit (einem) bestimmten Merkmale(n) eine Schlafstörung hat.</p>
+<p>Folgende Daten<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> liegen für Ihre Analysen vor:</p>
+<ul>
+<li><code>sleep_problem</code>: gibt an, ob eine Person ein Schlafproblem hat (1 = ja; 0 = nein)</li>
+<li><code>coffee_drinker</code>: gibt an, ob eine Person regelmäßig Kaffee trinkt (1 = ja, Kaffeetrinker; 0 = kein Kaffeetrinker)</li>
+<li><code>fast_food_spend</code>: jährlichen Ausgaben für Fast Food</li>
+<li><code>income</code>: das Jahreseinkommen</li>
+</ul>
+<p>Dieser Datensatz steht im Blackboard zum Download zur Verfügung (<em>sleep_data.csv</em>).</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>bei der multinomialen Regression bleiben wie bei der multiplen Regression die grundlegenden Ideen und Vorgehensweisen dieselben.<a href="grundlegende-idee-der-logistischen-regression.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>bei den vorliegenden Daten handelt es sich um simulierte Daten!<a href="grundlegende-idee-der-logistischen-regression.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="motivation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
