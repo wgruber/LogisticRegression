@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Motivation | Logistische Regression</title>
+  <meta name="description" content="Methodenlehre und Statistik 3" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Motivation | Logistische Regression" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/Images/Cover.png" />
+  <meta property="og:description" content="Methodenlehre und Statistik 3" />
+  <meta name="github-repo" content="wgruber/LogisticRegression" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Motivation | Logistische Regression" />
+  
+  <meta name="twitter:description" content="Methodenlehre und Statistik 3" />
+  <meta name="twitter:image" content="/Images/Cover.png" />
+
+<meta name="author" content="W. R. Gruber" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="vorbemerkung.html"/>
+<link rel="next" href="grundlegende-idee.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Logistische Regression</a></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section" id="toc-section"></a></li>
+<li class="chapter" data-level="" data-path="vorbemerkung.html"><a href="vorbemerkung.html"><i class="fa fa-check"></i>Vorbemerkung</a></li>
+<li class="chapter" data-level="" data-path="motivation.html"><a href="motivation.html"><i class="fa fa-check"></i>Motivation</a>
+<ul>
+<li class="chapter" data-level="" data-path="motivation.html"><a href="motivation.html#beispiele-aus-der-psychologie"><i class="fa fa-check"></i>Beispiele aus der Psychologie</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="grundlegende-idee.html"><a href="grundlegende-idee.html"><i class="fa fa-check"></i>Grundlegende Idee</a>
+<ul>
+<li class="chapter" data-level="" data-path="grundlegende-idee.html"><a href="grundlegende-idee.html#einführendes-beispiel"><i class="fa fa-check"></i>Einführendes Beispiel</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="theorie-der-logistischen-regression.html"><a href="theorie-der-logistischen-regression.html"><i class="fa fa-check"></i>Theorie der logistischen Regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="theorie-der-logistischen-regression.html"><a href="theorie-der-logistischen-regression.html#lineare-modelle"><i class="fa fa-check"></i>Lineare Modelle</a></li>
+<li class="chapter" data-level="" data-path="theorie-der-logistischen-regression.html"><a href="theorie-der-logistischen-regression.html#logistische-funktion"><i class="fa fa-check"></i>Logistische Funktion</a></li>
+<li class="chapter" data-level="" data-path="theorie-der-logistischen-regression.html"><a href="theorie-der-logistischen-regression.html#odds-ratio"><i class="fa fa-check"></i>Odds Ratio</a></li>
+<li class="chapter" data-level="" data-path="theorie-der-logistischen-regression.html"><a href="theorie-der-logistischen-regression.html#interpretation-der-odds-ratio-im-kontext-therapieerfolg"><i class="fa fa-check"></i>Interpretation der Odds-Ratio im Kontext Therapieerfolg</a>
+<ul>
+<li class="chapter" data-level="" data-path="theorie-der-logistischen-regression.html"><a href="theorie-der-logistischen-regression.html#a-fall-1-eb-1-kein-einfluss"><i class="fa fa-check"></i>a) Fall 1: <span class="math inline">\(e^{b} = 1\)</span> — Kein Einfluss</a></li>
+<li class="chapter" data-level="" data-path="theorie-der-logistischen-regression.html"><a href="theorie-der-logistischen-regression.html#b-fall-2-eb-1-erhöhte-erfolgswahrscheinlichkeit"><i class="fa fa-check"></i>b) Fall 2: <span class="math inline">\(e^{b} &gt; 1\)</span> — Erhöhte Erfolgswahrscheinlichkeit</a></li>
+<li class="chapter" data-level="" data-path="theorie-der-logistischen-regression.html"><a href="theorie-der-logistischen-regression.html#c-fall-3-eb-1-verringerte-erfolgswahrscheinlichkeit"><i class="fa fa-check"></i>c) Fall 3: <span class="math inline">\(e^{b} &lt; 1\)</span> — Verringerte Erfolgswahrscheinlichkeit</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="evaluierung-des-modells.html"><a href="evaluierung-des-modells.html"><i class="fa fa-check"></i>Evaluierung des Modells</a>
+<ul>
+<li class="chapter" data-level="" data-path="evaluierung-des-modells.html"><a href="evaluierung-des-modells.html#likelihood-und-log-likelihood"><i class="fa fa-check"></i>Likelihood und Log-Likelihood</a>
+<ul>
+<li class="chapter" data-level="" data-path="evaluierung-des-modells.html"><a href="evaluierung-des-modells.html#definition-der-likelihood"><i class="fa fa-check"></i>Definition der Likelihood</a></li>
+<li class="chapter" data-level="" data-path="evaluierung-des-modells.html"><a href="evaluierung-des-modells.html#die-log-likelihood"><i class="fa fa-check"></i>Die Log-Likelihood</a></li>
+<li class="chapter" data-level="" data-path="evaluierung-des-modells.html"><a href="evaluierung-des-modells.html#anwendung-in-der-parameterschätzung"><i class="fa fa-check"></i>Anwendung in der Parameterschätzung</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="evaluierung-des-modells.html"><a href="evaluierung-des-modells.html#anwendung-in-der-logistischen-regression"><i class="fa fa-check"></i>Anwendung in der Logistischen Regression</a>
+<ul>
+<li class="chapter" data-level="" data-path="evaluierung-des-modells.html"><a href="evaluierung-des-modells.html#die-deviance-statistic-delta-d"><i class="fa fa-check"></i>Die Deviance-Statistic (<span class="math inline">\(\Delta D\)</span>)</a></li>
+<li class="chapter" data-level="" data-path="evaluierung-des-modells.html"><a href="evaluierung-des-modells.html#anschauliche-erklärung"><i class="fa fa-check"></i>Anschauliche Erklärung</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="evaluierung-des-modells.html"><a href="evaluierung-des-modells.html#wald-statistik"><i class="fa fa-check"></i>Wald Statistik</a></li>
+<li class="chapter" data-level="" data-path="evaluierung-des-modells.html"><a href="evaluierung-des-modells.html#pseudobestimmtheitsmaß-pseudo-r2-oder-mcfaddens-r2"><i class="fa fa-check"></i>Pseudobestimmtheitsmaß (Pseudo-<span class="math inline">\(R^2\)</span> oder McFadden’s <span class="math inline">\(R^2\)</span>)</a></li>
+<li class="chapter" data-level="" data-path="evaluierung-des-modells.html"><a href="evaluierung-des-modells.html#genauigkeit-accuracy"><i class="fa fa-check"></i>Genauigkeit (Accuracy)</a></li>
+<li class="chapter" data-level="" data-path="evaluierung-des-modells.html"><a href="evaluierung-des-modells.html#präzision-precision"><i class="fa fa-check"></i>Präzision (Precision)</a></li>
+<li class="chapter" data-level="" data-path="evaluierung-des-modells.html"><a href="evaluierung-des-modells.html#recall-sensitivität-oder-true-positive-rate"><i class="fa fa-check"></i>Recall (Sensitivität oder True Positive Rate)</a></li>
+<li class="chapter" data-level="" data-path="evaluierung-des-modells.html"><a href="evaluierung-des-modells.html#f1-score"><i class="fa fa-check"></i>F1-Score</a></li>
+<li class="chapter" data-level="" data-path="evaluierung-des-modells.html"><a href="evaluierung-des-modells.html#receiver-operating-characteristic-roc-curve"><i class="fa fa-check"></i>Receiver Operating Characteristic (ROC) Curve</a></li>
+<li class="chapter" data-level="" data-path="evaluierung-des-modells.html"><a href="evaluierung-des-modells.html#area-under-the-roc-curve-auc-roc"><i class="fa fa-check"></i>Area Under the ROC Curve (AUC-ROC)</a></li>
+<li class="chapter" data-level="" data-path="evaluierung-des-modells.html"><a href="evaluierung-des-modells.html#konfusionsmatrix-confusion-matrix"><i class="fa fa-check"></i>Konfusionsmatrix (Confusion Matrix):</a></li>
+<li class="chapter" data-level="" data-path="evaluierung-des-modells.html"><a href="evaluierung-des-modells.html#zusammenfassung"><i class="fa fa-check"></i>Zusammenfassung</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anwendungsbeispiel.html"><a href="anwendungsbeispiel.html"><i class="fa fa-check"></i>Anwendungsbeispiel</a>
+<ul>
+<li class="chapter" data-level="" data-path="anwendungsbeispiel.html"><a href="anwendungsbeispiel.html#datenvorverarbeitung"><i class="fa fa-check"></i>Datenvorverarbeitung</a>
+<ul>
+<li class="chapter" data-level="" data-path="anwendungsbeispiel.html"><a href="anwendungsbeispiel.html#schlafprobleme-und-alkohol"><i class="fa fa-check"></i>Schlafprobleme und Alkohol</a></li>
+<li class="chapter" data-level="" data-path="anwendungsbeispiel.html"><a href="anwendungsbeispiel.html#schlafprobleme-und-einkommen"><i class="fa fa-check"></i>Schlafprobleme und Einkommen</a></li>
+<li class="chapter" data-level="" data-path="anwendungsbeispiel.html"><a href="anwendungsbeispiel.html#schlafprobleme-und-kaffe"><i class="fa fa-check"></i>Schlafprobleme und Kaffe</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anwendungsbeispiel.html"><a href="anwendungsbeispiel.html#modellanpassung"><i class="fa fa-check"></i>Modellanpassung</a>
+<ul>
+<li class="chapter" data-level="" data-path="anwendungsbeispiel.html"><a href="anwendungsbeispiel.html#zusammenhang-der-prädiktoren"><i class="fa fa-check"></i>Zusammenhang der Prädiktoren</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="anwendungsbeispiel.html"><a href="anwendungsbeispiel.html#vorhersagen"><i class="fa fa-check"></i>Vorhersagen</a></li>
+<li class="chapter" data-level="" data-path="anwendungsbeispiel.html"><a href="anwendungsbeispiel.html#vorhersagen-mit-unserem-logistischen-modell"><i class="fa fa-check"></i>Vorhersagen mit unserem logistischen Modell</a></li>
+<li class="chapter" data-level="" data-path="anwendungsbeispiel.html"><a href="anwendungsbeispiel.html#von-wahrscheinlichkeiten-zu-klassifikationen"><i class="fa fa-check"></i>Von Wahrscheinlichkeiten zu Klassifikationen</a></li>
+<li class="chapter" data-level="" data-path="anwendungsbeispiel.html"><a href="anwendungsbeispiel.html#modellevaluierung"><i class="fa fa-check"></i>Modellevaluierung</a>
+<ul>
+<li class="chapter" data-level="" data-path="anwendungsbeispiel.html"><a href="anwendungsbeispiel.html#genauigkeit-accuracy-1"><i class="fa fa-check"></i>Genauigkeit (Accuracy)</a></li>
+<li class="chapter" data-level="" data-path="anwendungsbeispiel.html"><a href="anwendungsbeispiel.html#sensitivität-spezifität-und-die-konfusionsmatrix"><i class="fa fa-check"></i>Sensitivität, Spezifität und die Konfusionsmatrix</a></li>
+<li class="chapter" data-level="" data-path="anwendungsbeispiel.html"><a href="anwendungsbeispiel.html#roc-auc"><i class="fa fa-check"></i>ROC &amp; AUC</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://wgruber.github.io/LogisticRegression" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Logistische Regression</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="motivation" class="section level1 unnumbered hasAnchor">
+<h1>Motivation<a href="motivation.html#motivation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Die logistische Regression ist ein Spezialfall bzw. eine Erweiterung der Regressionsanalyse und wird verwendet, wenn die abhängige Variable nominalskaliert ist. In der Psychologie kann dies beispielsweise bei der Variable “Therapieerfolg” mit den Ausprägungen “Erfolg” und “kein Erfolg” zutreffend sein.</p>
+<p>Mit der logistischen Regression können wir nun die abhängige Variable erklären bzw. die Eintrittswahrscheinlichkeit der Ausprägungen dieser Variable schätzen. Durch diese Wahrscheinlichkeitsaussagen bietet die logistische Regression nicht nur ein Klassifikationsmodell, sondern auch eine Möglichkeit, den Einfluss einzelner Faktoren auf das Ergebnis zu quantifizieren. Dies ist besonders wertvoll, wenn es darum geht, Entscheidungen fundiert zu treffen oder präventive Maßnahmen zu entwickeln.</p>
+<div id="beispiele-aus-der-psychologie" class="section level2 hasAnchor">
+<h2>Beispiele aus der Psychologie<a href="motivation.html#beispiele-aus-der-psychologie" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>Wir möchten untersuchen, ob eine bestimmte Therapieform für Patienten mit einer Angststörung erfolgreich ist. Hierzu erhalten wir einen Datensatz mit Informationen über Patienten, die eine Therapie durchlaufen haben, sowie deren Therapieergebnisse (erfolgreich/nicht erfolgreich).</p></li>
+<li><p>Ein anderes Beispiel könnte darin bestehen, die Wahrscheinlichkeit abzuschätzen, ob eine Person mit einem hohen Maß an Stress und bestimmten Persönlichkeitsmerkmalen “anfällig” oder “nicht anfällig” für Burnout ist. Hierfür könnte man die Daten über Stresslevel, Persönlichkeitstests und den aktuellen psychischen Zustand der Personen verwenden.</p></li>
+<li><p>In der Sozialpsychologie könnte eine logistische Regression genutzt werden, um die Wahrscheinlichkeit vorherzusagen, dass eine Person sich in einer bestimmten sozialen Situation konform verhält. Zum Beispiel könnte man untersuchen, wie Faktoren wie Gruppengröße, Gruppenzusammenhalt und persönliche Überzeugungen die Wahrscheinlichkeit beeinflussen, dass eine Person konforme Entscheidungen trifft.</p></li>
+<li><p>In der Allgemeinen Psychologie könnte die logistische Regression verwendet werden, um zu bestimmen, wie wahrscheinlich es ist, dass eine Person unter bestimmten Bedingungen eine Aufgabe erfolgreich bewältigt. Beispielsweise könnte man untersuchen, wie Variablen wie Stressniveau, Schlafqualität und Aufmerksamkeit die Wahrscheinlichkeit beeinflussen, dass eine Person bei einem kognitiven Test erfolgreich ist.</p></li>
+<li><p>In der Klinischen Psychologie kann eine logistische Regression verwendet werden, um die Wahrscheinlichkeit einer Diagnose zu prognostizieren. Beispielsweise könnte man die Wahrscheinlichkeit berechnen, dass ein Patient eine depressive Störung entwickelt, basierend auf Prädiktoren wie genetischer Veranlagung, früheren traumatischen Erlebnissen und aktuellen Lebensstressoren.</p></li>
+</ul>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="vorbemerkung.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="grundlegende-idee.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
